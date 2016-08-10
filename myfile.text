@@ -1,0 +1,6 @@
+configuration/
+Dockerfile
+myfile.text
+pom.xml
+src/
+target/

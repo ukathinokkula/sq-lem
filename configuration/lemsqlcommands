@@ -1,0 +1,60 @@
+create database lemservice;
+
+
+TABLE lemusers (id int(10) unsigned NOT NULL AUTO_INCREMENT,   username varchar(100) NOT NULL,  password varchar(100) NOT NULL,  
+role_name varchar(100) NOT NULL,   version int(10) DEFAULT 1,  created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  created_by varchar(32) NOT NULL,  updated_date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',  updated_by varchar(32) DEFAULT NULL, 
+  status int(1) DEFAULT 1,   last_logindate timestamp NULL DEFAULT NULL,  PRIMARY KEY (id));
+
+ CREATE TABLE complexity_type (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  complexity_type varchar(100) NOT NULL,
+  hours double(10,2) NOT NULL,
+  created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_by varchar(100) DEFAULT NULL,
+  updated_date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  updated_by varchar(100) DEFAULT NULL,
+  status int(1) DEFAULT '1',
+  description varchar(400) DEFAULT NULL,
+  version int(10) DEFAULT NULL,
+  existing_component_ratio double(10,2) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+ CREATE TABLE component_list (  id int(10) NOT NULL AUTO_INCREMENT,  name varchar(100) NOT NULL, 
+ complexity_type int(10) NOT NULL,  project_id int(10) NOT NULL,  technology varchar(100) DEFAULT NULL,  
+ new_component char(1) DEFAULT NULL,  estimation_model_type int(10) DEFAULT NULL,  accuracy varchar(100) DEFAULT NULL, 
+ total_hours double(10,2) DEFAULT NULL,  component_count int(10) DEFAULT NULL,  complexity_ratio double(10,2) DEFAULT NULL, 
+ created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,  created_by varchar(100) DEFAULT NULL, 
+ updated_date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',  updated_by varchar(100) DEFAULT NULL, 
+ status int(1) DEFAULT 1,  description varchar(400) DEFAULT NULL,  version int(10) DEFAULT NULL, 
+ weightage double(10,2) DEFAULT NULL,  PRIMARY KEY (id));
+ 
+ CREATE TABLE estimation_model_type (
+  ID int(10) NOT NULL AUTO_INCREMENT,
+  NAME varchar(100) NOT NULL,
+  accuracy varchar(100) DEFAULT NULL,
+  created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_by varchar(100) DEFAULT NULL,
+  updated_date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  updated_by varchar(100) DEFAULT NULL,
+  status int(1) DEFAULT '1',
+  description varchar(400) DEFAULT NULL,
+  version int(10) DEFAULT NULL,
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE project_details (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  client varchar(100) NOT NULL,
+  country varchar(100) NOT NULL,
+  created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_by varchar(100) DEFAULT NULL,
+  updated_date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  updated_by varchar(100) DEFAULT NULL,
+  status int(1) DEFAULT '1',
+  DESCRIPTION varchar(400) DEFAULT NULL,
+  version int(10) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
